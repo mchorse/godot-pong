@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc4ry6mrsjcot"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_7pwtd"]
+[ext_resource type="Texture2D" uid="uid://bcxeekxgnyk18" path="res://tileset.png" id="1_b2nax"]
+[ext_resource type="FontFile" uid="uid://davy5gy8opq37" path="res://ChevyRay - Lazytown Mono.ttf" id="3_nrrhm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oevv"]
+atlas = ExtResource("1_b2nax")
+region = Rect2(0, 0, 12, 162)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0h2h"]
+atlas = ExtResource("1_b2nax")
+region = Rect2(14, 0, 16, 16)
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_7pwtd")
+
+[node name="PlayerPaddle" type="Sprite2D" parent="."]
+position = Vector2(80, 360)
+texture = SubResource("AtlasTexture_7oevv")
+
+[node name="NPCPaddle" type="Sprite2D" parent="."]
+position = Vector2(1200, 368)
+texture = SubResource("AtlasTexture_7oevv")
+
+[node name="Ball" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = SubResource("AtlasTexture_i0h2h")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 40.0
+offset_right = 64.0
+offset_bottom = 79.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_nrrhm")
+theme_override_font_sizes/font_size = 36
+text = "0 | 0"
